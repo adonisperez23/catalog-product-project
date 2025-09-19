@@ -1,8 +1,7 @@
 export type Product = {
     name: string;
     price: number;
-    img_url: string;
-    img_avif_url: string;
+    type: "Plato"|"Contorno" | "Bebida" | "Extra" | "Delivery" | "Otro";
+    img_url?: string;
+    img_avif_url?: string;
 };
-
-export type BaseProduct = Pick<Product, "name" | "price">;

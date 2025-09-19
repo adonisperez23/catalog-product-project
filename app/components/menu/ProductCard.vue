@@ -23,14 +23,7 @@
     </div>
     <ModalProduct
         v-if="_open_modal"
-        :product="{
-            product: $props,
-            subtotal: $props.price,
-            amount: 1,
-            contornos: [],
-            bebidas: [],
-            extras: [],
-        }"
+        :product="new ProductOrder($props)"
         v-on:close="closeModal"
     />
 </template>
@@ -38,16 +31,27 @@
 <script setup lang="ts">
 import type { Product } from "~/types/Product";
 import ModalProduct from "../modal/ModalProduct.vue";
+import { ProductOrder } from "~/types/ProductOrder";
 
 const $props = defineProps<Product>();
 
 const _open_modal = ref(false);
 
 function closeModal() {
+    useHead({
+        bodyAttrs: {
+            style: { overflow: "auto" },
+        },
+    });
     _open_modal.value = false;
 }
 
 function openModal() {
+    useHead({
+        bodyAttrs: {
+            style: { overflow: "hidden" },
+        },
+    });
     _open_modal.value = true;
 }
 </script>
