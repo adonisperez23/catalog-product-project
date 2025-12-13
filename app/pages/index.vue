@@ -27,7 +27,14 @@
                         >Whatsapp</a
                     >
                     <button
-                        @click="_show_modal_order = true"
+                        @click="
+                            $store_manager.onOpenModal(
+                                'ORDER_MODAL',
+                                undefined,
+                                undefined,
+                                undefined
+                            )
+                        "
                         class="flex justify-center items-center gap-[8px] h-[48px] border border-[#522711] sm:px-[32px] px-[16px] py-[12px] rounded-[6px] bg-[#FF4545] text-[white] hover:translate-y-[-6px]"
                     >
                         <FoodIcon />
@@ -82,6 +89,14 @@
                         v-for="(product, index) in $store_manager.products"
                         :key="index"
                         v-bind="product"
+                        @click="
+                            $store_manager.onOpenModal(
+                                'SELECTED_PRODUCT',
+                                product,
+                                undefined,
+                                undefined
+                            )
+                        "
                     />
                 </div>
             </div>
@@ -124,7 +139,17 @@
             </div>
         </div>
     </div>
-    <ModalOrder @close="_show_modal_order = false" v-if="_show_modal_order" />
+    <ModalOrder
+        @close="$store_manager.onCloseModal()"
+        v-if="$store_manager.modal_on === 'ORDER_MODAL'"
+    />
+    <ModalProduct
+        v-if="
+            $store_manager.modal_on === 'SELECTED_PRODUCT' ||
+            $store_manager.modal_on === 'SELECTED_PRODUCT_EDITING'
+        "
+        @close="$store_manager.onCloseModal()"
+    />
 </template>
 
 <script setup lang="ts">
@@ -139,7 +164,8 @@ useSeoMeta({
     ogTitle: "Restaurant Los cinco sabores c.a",
     description: "Platos caseros y tradicionales para toda la familia",
     ogDescription: "Platos caseros y tradicionales para toda la familia",
-    ogImage: "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/ogimage.png",
+    ogImage:
+        "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/ogimage.png",
 });
 
 useHead({
@@ -150,9 +176,6 @@ useHead({
 
 const $store_manager = useStore();
 
-const _show_modal_order = ref(false);
-
-const _navbar = ref<HTMLElement | null>(null);
 const _is_hidden = ref(true);
 const _is_scroll_up = ref(false);
 const _is_at_top = ref(true);
@@ -178,6 +201,25 @@ function checkScrollDirection() {
     }
     lastScrollY = currentScrollY;
 }
+
+// function closeModal() {
+//     $store_manager.value.modalStateChange(null);
+//     useHead({
+//         bodyAttrs: {
+//             style: { overflow: "auto" },
+//         },
+//     });
+// }
+
+// function openModal(product: Product) {
+//     $store_manager.value.selectProduct(new ProductOrder(product));
+//     $store_manager.value.modalStateChange("SELECTED_PRODUCT");
+//     useHead({
+//         bodyAttrs: {
+//             style: { overflow: "hidden" },
+//         },
+//     });
+// }
 
 checkScrollDirection();
 

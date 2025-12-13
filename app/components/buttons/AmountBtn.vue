@@ -7,10 +7,10 @@
             },
         ]"
     >
-        <button @click="$emit('remove')"><RemoveIcon :small="small" /></button>
+        <button v-show="!only_amount" @click="$emit('remove')"><RemoveIcon :small="small" /></button>
         <p v-if="!small">{{ amount }}</p>
         <h5 v-else>{{ amount }}</h5>
-        <button @click="$emit('add')"><AddIcon :small="small" /></button>
+        <button v-show="!only_amount" @click="$emit('add')"><AddIcon :small="small" /></button>
     </div>
 </template>
 
@@ -21,6 +21,7 @@ import RemoveIcon from "../icons/RemoveIcon.vue";
 defineProps<{
     amount: number;
     small?: boolean;
+    only_amount?:boolean;
 }>();
 
 defineEmits(["remove", "add"]);

@@ -1,14 +1,14 @@
 <template>
     <div
-        @click="openModal"
-        class="flex flex-col gap-[16px] hover:translate-y-[-12px] active-hover"
+        @click="$emit('click')"
+        class="flex flex-col gap-[16px] active-hover"
     >
         <picture>
             <source type="image/avif" :srcset="img_avif_url" />
             <source type="image/jpeg" :srcset="img_url" />
             <img
                 :src="img_url"
-                class="size-[320px] border border-[#D7D7D7] hover:border-[#72BF78] object-cover rounded-[16px]"
+                class="size-[320px] border border-[#D7D7D7] hover:translate-y-[-12px] hover:border-[#72BF78] object-cover rounded-[16px]"
                 loading="lazy"
             />
         </picture>
@@ -21,39 +21,13 @@
             <p>${{ price }}</p>
         </div>
     </div>
-    <ModalProduct
-        v-if="_open_modal"
-        :product="new ProductOrder($props)"
-        v-on:close="closeModal"
-    />
 </template>
 
 <script setup lang="ts">
 import type { Product } from "~/types/Product";
-import ModalProduct from "../modal/ModalProduct.vue";
-import { ProductOrder } from "~/types/ProductOrder";
 
 const $props = defineProps<Product>();
-
-const _open_modal = ref(false);
-
-function closeModal() {
-    useHead({
-        bodyAttrs: {
-            style: { overflow: "auto" },
-        },
-    });
-    _open_modal.value = false;
-}
-
-function openModal() {
-    useHead({
-        bodyAttrs: {
-            style: { overflow: "hidden" },
-        },
-    });
-    _open_modal.value = true;
-}
+defineEmits(["click"]);
 </script>
 
 <style scoped>

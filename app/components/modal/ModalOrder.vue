@@ -3,7 +3,7 @@
         class="fixed inset-0 z-2 flex justify-center items-center bg-[rgba(51,51,51,0.7)] text-[#333333]"
     >
         <div
-            @click.stop="closeModal"
+            @click.stop="$emit('close')"
             class="flex justify-center items-center w-full"
         >
             <div
@@ -12,7 +12,7 @@
             >
                 <div class="flex justify-between items-center">
                     <h2>Tu Pedido</h2>
-                    <button @click="closeModal">
+                    <button @click="$emit('close')">
                         <CloseIcon />
                     </button>
                 </div>
@@ -20,7 +20,7 @@
                     class="flex flex-col justify-between items-start gap-[32px] overflow-auto max-h-[500px]"
                 >
                     <div
-                        v-for="(order, index) in $store_manager.getCart()"
+                        v-for="(order, index) in cart"
                         class="flex justify-between items-start gap-[8px] w-full"
                     >
                         <div class="flex justify-center items-start gap-[8px]">
@@ -50,7 +50,14 @@
                                 >
                                     <h6
                                         v-if="order.product_type === 'Plato'"
-                                        @click="editProduct"
+                                        @click="
+                                            $store_manager.onOpenModal(
+                                                'SELECTED_PRODUCT_EDITING',
+                                                undefined,
+                                                order,
+                                                index
+                                            )
+                                        "
                                         class="underline cursor-pointer"
                                     >
                                         Editar
@@ -65,17 +72,14 @@
                                     </h6>
                                 </div>
                             </div>
-                            <ModalProduct
-                                v-if="_show_modal_product"
-                                @close="_show_modal_product = false"
-                                :product="order"
-                                :editing_product_index="index"
-                            />
                         </div>
-                        <div class="flex justify-center items-start">
+                        <div
+                            v-if="order.product_type !== 'Delivery'"
+                            class="flex justify-center items-start"
+                        >
                             <AmountBtn
-                                @add="addProduct(order)"
-                                @remove="removeProduct(order)"
+                                @add="order.addProduct(1)"
+                                @remove="order.removeProduct()"
                                 :amount="order.amount"
                                 small
                             />
@@ -93,10 +97,10 @@
                 >
                     <div class="flex justify-between items-center">
                         <h4 class="font-semibold">Total</h4>
-                        <h3>${{ $store_manager.total }}</h3>
+                        <h3>${{ total_amount }}</h3>
                     </div>
                     <MainBtn
-                        :disabled="$store_manager.cart.length === 0"
+                        :disabled="disabledSendOrder"
                         text="Enviar pedido"
                         @click="sendOrder"
                     />
@@ -116,12 +120,21 @@ const $emit = defineEmits(["close"]);
 
 const $store_manager = useStore();
 
-const _show_modal_product = ref(false);
+const cart = computed(() => {
+    // let ordened_cart: ProductOrder[] = [
+    //     ...$store_manager.value.getCart(),
+    //     ...$store_manager.value.getSecondaryProductsCart(),
+    // ];
+    return $store_manager.value.getCart();
+});
 
-function editProduct() {
-    $store_manager.value.editProduct = true;
-    _show_modal_product.value = true;
-}
+const total_amount = computed(() => {
+    return $store_manager.value.total;
+});
+
+const disabledSendOrder = computed(() => {
+    return $store_manager.value.cart.length === 0;
+});
 
 function sendOrder() {
     const MENSAJE = $store_manager.value.setMessageOrder();
@@ -132,21 +145,21 @@ function sendOrder() {
     );
 }
 
-function closeModal() {
-    useHead({
-        bodyAttrs: {
-            style: { overflow: "auto" },
-        },
-    });
-    $emit("close");
-}
+// function closeModal() {
+//     useHead({
+//         bodyAttrs: {
+//             style: { overflow: "auto" },
+//         },
+//     });
+//     $emit("close");
+// }
 
-//cuando este abierto se oculta el scroll de la pagina principal
-useHead({
-    bodyAttrs: {
-        style: { overflow: "hidden" },
-    },
-});
+// //cuando este abierto se oculta el scroll de la pagina principal
+// useHead({
+//     bodyAttrs: {
+//         style: { overflow: "hidden" },
+//     },
+// });
 </script>
 
 <style scoped></style>

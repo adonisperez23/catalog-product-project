@@ -12,14 +12,21 @@
                     <picture>
                         <source
                             type="image/avif"
-                            :srcset="_product_order.product.img_avif_url"
+                            :srcset="
+                                $store_manager.product_selected.product
+                                    .img_avif_url
+                            "
                         />
                         <source
                             type="image/jpeg"
-                            :srcset="_product_order.product.img_url"
+                            :srcset="
+                                $store_manager.product_selected.product.img_url
+                            "
                         />
                         <img
-                            :src="_product_order.product.img_url"
+                            :src="
+                                $store_manager.product_selected.product.img_url
+                            "
                             class="object-cover h-[239px] w-full"
                             loading="lazy"
                         />
@@ -36,14 +43,23 @@
                         <picture>
                             <source
                                 type="image/avif"
-                                :srcset="_product_order.product.img_avif_url"
+                                :srcset="
+                                    $store_manager.product_selected.product
+                                        .img_avif_url
+                                "
                             />
                             <source
                                 type="image/jpeg"
-                                :srcset="_product_order.product.img_url"
+                                :srcset="
+                                    $store_manager.product_selected.product
+                                        .img_url
+                                "
                             />
                             <img
-                                :src="_product_order.product.img_url"
+                                :src="
+                                    $store_manager.product_selected.product
+                                        .img_url
+                                "
                                 class="size-[352px] border border-[#D7D7D7] rounded-[16px] object-cover"
                                 loading="lazy"
                             />
@@ -54,28 +70,39 @@
                     >
                         <div class="flex flex-col justify-center">
                             <h2 class="z-1">
-                                {{ _product_order.product.name }}
+                                {{
+                                    $store_manager.product_selected.product.name
+                                }}
                             </h2>
                             <p class="text-[#858589]">
-                                {{ _product_order.describirContornos() }}
+                                {{
+                                    $store_manager.product_selected.describirContornos()
+                                }}
                             </p>
                         </div>
                         <div class="flex flex-col gap-[32px] overflow-auto">
                             <div
-                                v-if="!sin_contornos"
+                                v-if="
+                                    !$store_manager.product_selected
+                                        .is_product_without_contorno
+                                "
                                 class="flex flex-col justify-center gap-[16px]"
                             >
                                 <div class="flex justify-between items-center">
                                     <h4>
                                         Contornos ({{
-                                            _product_order.contornos.size
+                                            $store_manager.product_selected
+                                                .contornos.size
                                         }}/3)
                                     </h4>
                                     <div
                                         class="flex justify-center items-center gap-[8px]"
                                     >
                                         <div
-                                            v-if="!_product_order.can_add_order"
+                                            v-if="
+                                                !$store_manager.product_selected
+                                                    .can_add_order
+                                            "
                                             class="flex justify-center items-center w-[75px] h-[23px] bg-[#D7D7D7] rounded-[6px]"
                                         >
                                             <h6>Requerido</h6>
@@ -106,11 +133,11 @@
                                     <h5
                                         :class="{
                                             'text-[#D7D7D7]':
-                                                !_product_order.contornos.has(
+                                                !$store_manager.product_selected.contornos.has(
                                                     contorno.name
                                                 ) &&
-                                                _product_order.contornos
-                                                    .size === 3,
+                                                $store_manager.product_selected
+                                                    .contornos.size === 3,
                                         }"
                                     >
                                         {{ contorno.name }}
@@ -118,20 +145,21 @@
                                     <CheckBox
                                         :key="index"
                                         @click="
-                                            _product_order.addContorno(
+                                            $store_manager.product_selected.addContorno(
                                                 contorno.name
                                             )
                                         "
                                         :checked="
-                                            _product_order.contornos.has(
+                                            $store_manager.product_selected.contornos.has(
                                                 contorno.name
                                             )
                                         "
                                         :disabled="
-                                            !_product_order.contornos.has(
+                                            !$store_manager.product_selected.contornos.has(
                                                 contorno.name
                                             ) &&
-                                            _product_order.contornos.size === 3
+                                            $store_manager.product_selected
+                                                .contornos.size === 3
                                         "
                                     />
                                 </div>
@@ -286,34 +314,48 @@
                                     <h5 class="">
                                         <strong
                                             >{{
-                                                _product_order.amount
+                                                $store_manager.product_selected
+                                                    .amount
                                             }}
                                             productos</strong
                                         >
                                     </h5>
                                 </div>
                                 <h2 class="">
-                                    ${{ _product_order.sub_total }}
+                                    ${{
+                                        $store_manager.product_selected
+                                            .sub_total
+                                    }}
                                 </h2>
                             </div>
                             <div
                                 class="flex justify-between items-center gap-[16px]"
                             >
                                 <AmountBtn
-                                    @add="_product_order.addProduct()"
-                                    @remove="_product_order.removeProduct()"
-                                    :amount="_product_order.amount"
+                                    @add="
+                                        $store_manager.product_selected.addProduct()
+                                    "
+                                    @remove="
+                                        $store_manager.product_selected.removeProduct()
+                                    "
+                                    :amount="
+                                        $store_manager.product_selected.amount
+                                    "
                                 />
 
                                 <MainBtn
                                     class="hover:translate-y-[-4px]"
                                     :text="
-                                        $store_manager.is_editing_product
+                                        $store_manager.modal_on ===
+                                        'SELECTED_PRODUCT_EDITING'
                                             ? 'Actualizar'
                                             : 'Agregar'
                                     "
                                     @click="AddProductToStore"
-                                    :disabled="!_product_order.can_add_order"
+                                    :disabled="
+                                        !$store_manager.product_selected
+                                            .can_add_order
+                                    "
                                 />
                             </div>
                         </div>
@@ -331,34 +373,12 @@ import ArrowUpIcon from "../icons/ArrowUpIcon.vue";
 import CloseIcon from "../icons/CloseIcon.vue";
 import CheckBox from "../buttons/CheckBox.vue";
 import ArrowDownIcon from "../icons/ArrowDownIcon.vue";
-import { ProductOrder } from "~/types/ProductOrder";
 import { Teleport } from "vue";
 
 const $emit = defineEmits(["close"]);
 
-const $props = defineProps<{
-    product: ProductOrder;
-    editing_product_index?: number;
-}>();
-
-const _product_order = reactive<ProductOrder>(
-    new ProductOrder({
-        name: "",
-        price: 0,
-        type: "Plato",
-        img_avif_url: "",
-        img_url: "",
-    })
-);
-
-Object.assign(_product_order, $props.product);
 
 const $store_manager = useStore();
-
-//Productos que no llevan contornos
-// 1.Bologna
-
-const sin_contornos = _product_order.product.name === "Pasta a la bologna";
 
 const _show_contornos = ref(true);
 const _show_bebidas = ref(true);
@@ -366,17 +386,16 @@ const _show_extras = ref(true);
 const _show_delivery = ref(true);
 
 function AddProductToStore() {
-    if (
-        $store_manager.value.is_editing_product &&
-        $props.editing_product_index !== undefined
-    ) {
+    if ($store_manager.value.modal_on === "SELECTED_PRODUCT_EDITING") {
         $store_manager.value.editProductOrder(
-            _product_order,
-            $props.editing_product_index
+            $store_manager.value.product_selected
         );
     } else {
-        $store_manager.value.addProductOrder(_product_order);
+        $store_manager.value.addProductOrder(
+            $store_manager.value.product_selected
+        );
     }
+
     $emit("close");
 }
 </script>
