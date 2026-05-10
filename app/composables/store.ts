@@ -7,6 +7,33 @@ export const useStore = () =>
             new StoreManager(
                 [
                     {
+                        name: "Pollo guisado",
+                        price: 6.99,
+                        type: "Plato",
+                        img_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/Pollo_guisadoweb.jpg",
+                        img_avif_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/Pollo_guisadoweb.avif",
+                    },
+                    {
+                        name: "Pollo a la plancha",
+                        price: 6.99,
+                        type: "Plato",
+                        img_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/polloalaplanchaweb.jpg",
+                        img_avif_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/polloalaplanchaweb.avif",
+                    },
+                    {
+                        name: "Pescado frito",
+                        price: 7.99,
+                        type: "Plato",
+                        img_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/pescadocoginua.jpg",
+                        img_avif_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/pescadocoginua.avif",
+                    },
+                    {
                         name: "Lomito con pimenton",
                         price: 12.99,
                         type: "Plato",
@@ -15,24 +42,24 @@ export const useStore = () =>
                         img_avif_url:
                             "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/lomito1.avif",
                     },
-                    {
-                        name: "Plato navideño con asado negro",
-                        price: 11.99,
-                        type: "Plato",
-                        img_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/asadonavidad-min.jpg",
-                        img_avif_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/asadonavidad.avif",
-                    },
-                    {
-                        name: "Plato navideño con filet de cochino",
-                        price: 13.99,
-                        type: "Plato",
-                        img_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/navidadcochino-min.jpg",
-                        img_avif_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/navidadcochino.avif",
-                    },
+                    // {
+                    //     name: "Plato navideño con asado negro",
+                    //     price: 11.99,
+                    //     type: "Plato",
+                    //     img_url:
+                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/asadonavidad-min.jpg",
+                    //     img_avif_url:
+                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/asadonavidad.avif",
+                    // },
+                    // {
+                    //     name: "Plato navideño con filet de cochino",
+                    //     price: 13.99,
+                    //     type: "Plato",
+                    //     img_url:
+                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/navidadcochino-min.jpg",
+                    //     img_avif_url:
+                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/navidadcochino.avif",
+                    // },
                     // {
                     //     name: "Costillas de cochino fritas",
                     //     price: 11.99,
@@ -45,7 +72,7 @@ export const useStore = () =>
 
                     {
                         name: "Asado negro",
-                        price: 8.99,
+                        price: 9.99,
                         type: "Plato",
                         img_url:
                             "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/asado-min.jpg",
@@ -55,32 +82,32 @@ export const useStore = () =>
 
                     {
                         name: "Lengua en salsa",
-                        price: 8.99,
+                        price: 9.99,
                         type: "Plato",
                         img_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/lenguasalsa-min.jpg",
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/lenguaensalsaweb.jpg",
                         img_avif_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/lenguasalsa.avif",
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/lenguaensalsaweb.avif",
                     },
                     {
                         name: "Costillas guisadas",
-                        price: 8.99,
+                        price: 9.99,
                         type: "Plato",
                         img_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/costillasguisadas-min.jpg",
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/costillasguisadasweb.jpg",
                         img_avif_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/costillasguisadas.avif",
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/costillasguisadasweb.avif",
                     },
 
-                    {
-                        name: "Callos madrileños",
-                        price: 11.99,
-                        type: "Plato",
-                        img_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/callos-min1.jpg",
-                        img_avif_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/callos1.avif",
-                    },
+                    // {
+                    //     name: "Callos madrileños",
+                    //     price: 12.99,
+                    //     type: "Plato",
+                    //     img_url:
+                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/callos-min1.jpg",
+                    //     img_avif_url:
+                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/callos1.avif",
+                    // },
                     {
                         name: "Bistec de solomo",
                         price: 9.99,
@@ -101,7 +128,7 @@ export const useStore = () =>
                     },
                     {
                         name: "Bistec de higado encebollado",
-                        price: 8.99,
+                        price: 9.99,
                         type: "Plato",
                         img_url:
                             "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/higado-min1.jpg",
@@ -117,61 +144,62 @@ export const useStore = () =>
                     //     img_avif_url:
                     //         "https://voley-storage.nyc3.cdn.digitaloceanspaces.com/food/avif/10_rabo%20en%20salsa.avif",
                     // },
-                    // {
-                    //     name: "Pabellon criollo",
-                    //     price: 8.99,
-                    //     type: "Plato",
-                    //     img_url:
-                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/pabellon-min1.jpg",
-                    //     img_avif_url:
-                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/pabellon1.avif",
-                    // },
+                    {
+                        name: "Pabellon criollo",
+                        price: 7.99,
+                        type: "Plato",
+                        img_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/pabellonweb.jpg",
+                        img_avif_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/pabellonweb.avif",
+                    },
                     {
                         name: "Milanesa de pollo",
-                        price: 8.99,
+                        price: 9.99,
                         type: "Plato",
                         img_url:
                             "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/milanesa-min.jpg",
                         img_avif_url:
                             "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/milanesa.avif",
                     },
-                    {
-                        name: "Hallaca con ensalada",
-                        price: 6.99,
-                        type: "Plato",
-                        img_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/hallacaensalada-min.jpg",
-                        img_avif_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/hallacaensalada.avif",
-                    },
+                    // {
+                    //     name: "Hallaca con ensalada",
+                    //     price: 6.99,
+                    //     type: "Plato",
+                    //     img_url:
+                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/hallacaensalada-min.jpg",
+                    //     img_avif_url:
+                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/hallacaensalada.avif",
+                    // },
                     {
                         name: "Filet de pollo",
-                        price: 8.99,
+                        price: 9.99,
                         type: "Plato",
                         img_url:
                             "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/filetpollo-min.jpg",
                         img_avif_url:
                             "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/filetpollo.avif",
                     },
-                    // {
-                    //     name: "Pasta a la bologna",
-                    //     price: 7.99,
-                    //     type: "Plato",
-                    //     img_url:
-                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/bologna-min.jpg",
-                    //     img_avif_url:
-                    //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/bologna.avif",
-                    // },
+                    {
+                        name: "Pasta a la bologna",
+                        price: 6.99,
+                        type: "Plato",
+                        img_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/bologna-min.jpg",
+                        img_avif_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/bologna.avif",
+                    },
                 ],
                 [
                     { name: "Arroz", price: 0, type: "Contorno" },
                     { name: "Pasta", price: 0, type: "Contorno" },
+                    { name: "Arepas asadas", price: 0, type: "Contorno" },
                     { name: "Ensalada cocida", price: 0, type: "Contorno" },
                     { name: "Ensalada verde", price: 0, type: "Contorno" },
                     { name: "Pure de papa", price: 0, type: "Contorno" },
                     { name: "Papas al vapor", price: 0, type: "Contorno" },
                     { name: "Papa frita", price: 0, type: "Contorno" },
-                    { name: "tajadas fritas", price: 0, type: "Contorno" },
+                    { name: "Tajadas fritas", price: 0, type: "Contorno" },
                     { name: "Caraotas negras", price: 0, type: "Contorno" },
                     { name: "frijoles", price: 0, type: "Contorno" },
                     { name: "Agua mineral 355ml", price: 1, type: "Bebida" },
@@ -189,6 +217,6 @@ export const useStore = () =>
                         price: 2,
                         type: "Delivery",
                     },
-                ]
-            )
+                ],
+            ),
     );
