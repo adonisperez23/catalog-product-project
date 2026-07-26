@@ -60,16 +60,15 @@ export const useStore = () =>
                     //     img_avif_url:
                     //         "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/navidadcochino.avif",
                     // },
-                    // {
-                    //     name: "Costillas de cochino fritas",
-                    //     price: 11.99,
-                    //     type: "Plato",
-                    //     img_url:
-                    //         "https://voley-storage.nyc3.cdn.digitaloceanspaces.com/food/min/3_costillas%20de%20cochino%20fritas-min.png",
-                    //     img_avif_url:
-                    //         "https://voley-storage.nyc3.cdn.digitaloceanspaces.com/food/avif/3_costillas%20de%20cochino%20fritas.avif",
-                    // },
-
+                    {
+                        name: "Costillas de cochino fritas",
+                        price: 9.99,
+                        type: "Plato",
+                        img_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/costillasdecerdo.jpg",
+                        img_avif_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/costillasdecerdo.avif",
+                    },
                     {
                         name: "Asado negro",
                         price: 9.99,
@@ -98,7 +97,6 @@ export const useStore = () =>
                         img_avif_url:
                             "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/costillasguisadasweb.avif",
                     },
-
                     // {
                     //     name: "Callos madrileños",
                     //     price: 12.99,
@@ -116,6 +114,15 @@ export const useStore = () =>
                             "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/solomo-min.jpg",
                         img_avif_url:
                             "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/solomo.avif",
+                    },
+                    {
+                        name: "Lomo de cerdo",
+                        price: 9.99,
+                        type: "Plato",
+                        img_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/lomodecerdo.jpg",
+                        img_avif_url:
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/lomodecerdo.avif",
                     },
                     {
                         name: "Filet de cochino",
@@ -176,9 +183,9 @@ export const useStore = () =>
                         price: 9.99,
                         type: "Plato",
                         img_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/filetpollo-min.jpg",
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/filetdepollo2.jpg",
                         img_avif_url:
-                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/filetpollo.avif",
+                            "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/filetdepollo2.avif",
                     },
                     {
                         name: "Pasta a la bologna",
@@ -195,9 +202,11 @@ export const useStore = () =>
                     { name: "Pasta", price: 0, type: "Contorno" },
                     { name: "Arepas asadas", price: 0, type: "Contorno" },
                     { name: "Ensalada cocida", price: 0, type: "Contorno" },
-                    { name: "Ensalada verde", price: 0, type: "Contorno" },
+                    { name: "Ensalada verde", price: 0, type: "Contorno" }, 
+                    { name: "Ensalada rallada", price: 0, type: "Contorno" },
                     { name: "Pure de papa", price: 0, type: "Contorno" },
                     { name: "Papas al vapor", price: 0, type: "Contorno" },
+                    { name: "Papas al ajillo", price: 0, type: "Contorno" },
                     { name: "Papa frita", price: 0, type: "Contorno" },
                     { name: "Tajadas fritas", price: 0, type: "Contorno" },
                     { name: "Caraotas negras", price: 0, type: "Contorno" },
@@ -208,8 +217,8 @@ export const useStore = () =>
                     { name: "Jugo de lechoza", price: 2, type: "Bebida" },
                     { name: "Jugo de fresa", price: 3, type: "Bebida" },
                     { name: "Racion de papas fritas", price: 3, type: "Extra" },
-                    { name: "Sector Centro", price: 2, type: "Delivery" },
-                    { name: "Sector Tipuro", price: 3, type: "Delivery" },
+                    { name: "Sector Centro", price: 1, type: "Delivery" },
+                    { name: "Sector Tipuro", price: 2, type: "Delivery" },
                     { name: "Zona industrial", price: 3, type: "Delivery" },
                     { name: "Sector Juanico", price: 2, type: "Delivery" },
                     {
