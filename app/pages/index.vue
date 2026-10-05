@@ -130,7 +130,7 @@
                         </a>
                         <a
                             target="_blank"
-                            href="https://api.whatsapp.com/send?phone=584129797775"
+                            href="https://api.whatsapp.com/send?phone=584148942782"
                         >
                             <WhasappIcon />
                         </a>
