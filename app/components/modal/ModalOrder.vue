@@ -21,6 +21,12 @@
                 >
                     <div
                         v-for="(order, index) in cart"
+                        :key="order.product.name"
+                        :id="
+                            order.product_type === 'Delivery'
+                                ? 'tour-entrega'
+                                : undefined
+                        "
                         class="flex justify-between items-start gap-[8px] w-full"
                     >
                         <div class="flex justify-center items-start gap-[8px]">
@@ -44,6 +50,9 @@
                                 <p>{{ order.product.name }}</p>
                                 <h5>${{ order.sub_total }}</h5>
                                 <h6>{{ order.describirContornos() }}</h6>
+                                <h6 v-if="order.note.trim()">
+                                    📝 {{ order.note }}
+                                </h6>
 
                                 <div
                                     class="flex justify-start items-center gap-[8px]"
@@ -93,6 +102,7 @@
                     </div>
                 </div> -->
                 <div
+                    id="tour-total"
                     class="fixed bottom-0 left-0 z-1 shadow-[0_25px_50px_-12px] sm:shadow-none sm:static bg-[white] w-full p-[16px] sm:p-0 sm:bg-[#FFFFF6] flex flex-col gap-[16px]"
                 >
                     <div class="flex justify-between items-center">
@@ -100,6 +110,7 @@
                         <h3>${{ total_amount }}</h3>
                     </div>
                     <MainBtn
+                        id="tour-enviar"
                         :disabled="disabledSendOrder"
                         text="Enviar pedido"
                         @click="sendOrder"
@@ -119,6 +130,7 @@ import CloseIcon from "../icons/CloseIcon.vue";
 const $emit = defineEmits(["close"]);
 
 const $store_manager = useStore();
+const $tour = useTour();
 
 const cart = computed(() => {
     // let ordened_cart: ProductOrder[] = [
@@ -143,6 +155,7 @@ function sendOrder() {
     window.open(
         `https://api.whatsapp.com/send?phone=584148942782&text=${MENSAJE_ENCODED}+`
     );
+    $tour.notify("send_order");
 }
 
 // function closeModal() {

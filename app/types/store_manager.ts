@@ -62,10 +62,19 @@ export class StoreManager {
         if (existingProductOrderIndex !== -1) {
             // Si el producto ya existe, eliminarlo, ya que solo puede haber un solo secondary product por orden pero con diferentes cantidades
             this.cart.splice(existingProductOrderIndex, 1);
-        } else {
-            // Si el producto no existe, agregarlo al carrito
-            this.cart.push(new_product_order);
+            return;
         }
+
+        // Solo puede existir un unico sector de Delivery en el pedido
+        if (new_product_order.product_type === "Delivery") {
+            for (let index = this.cart.length - 1; index >= 0; index--) {
+                if (this.cart[index]!.product_type === "Delivery") {
+                    this.cart.splice(index, 1);
+                }
+            }
+        }
+
+        this.cart.push(new_product_order);
     }
 
     deleteProduct(product_index: number) {
@@ -97,6 +106,9 @@ export class StoreManager {
             } ${product.describirContornos()} x ${product.amount} — $${
                 product.sub_total
             } \n`;
+
+            const nota = product.note.trim();
+            if (nota) pedido_ordenado += `   ↳ Nota: ${nota}\n`;
         });
 
         return `Hola, buenas tardes. Quiero hacer este pedido:\n\n${pedido_ordenado} \n\nCantidad total de productos: ${this.totalProducts}\nMonto total: $${this.total}`;

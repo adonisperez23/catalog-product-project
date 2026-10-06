@@ -217,7 +217,7 @@ export const useStore = () =>
                     { name: "Jugo de parchita", price: 2, type: "Bebida" },
                     { name: "Jugo de guayaba", price: 2, type: "Bebida" },
                     { name: "Jugo de lechoza", price: 2, type: "Bebida" },
-                    { name: "Jugo de fresa", price: 3, type: "Bebida" },
+                    { name: "Jugo de fresa", price: 4, type: "Bebida" },
                     { name: "Racion de papas fritas", price: 3, type: "Extra" },
                     { name: "Sector Centro", price: 1, type: "Delivery" },
                     { name: "Sector Tipuro", price: 2, type: "Delivery" },

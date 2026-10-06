@@ -27,6 +27,7 @@
                         >Whatsapp</a
                     >
                     <button
+                        id="tour-mi-pedido"
                         @click="
                             $store_manager.onOpenModal(
                                 'ORDER_MODAL',
@@ -61,6 +62,7 @@
                         class="flex flex-col justify-center items-center gap-[16px]"
                     >
                         <a
+                            id="tour-empezar"
                             href="#menu"
                             class="flex justify-center items-center gap-[8px] w-[224px] h-[56px] border border-[#522711] px-[32px] py-[16px] rounded-[12px] bg-[#FFBC0D] text-[#522711] scroll-smooth"
                         >
@@ -89,6 +91,7 @@
                         v-for="(product, index) in $store_manager.products"
                         :key="index"
                         v-bind="product"
+                        :data-tour="index === 0 ? 'card' : undefined"
                         @click="
                             $store_manager.onOpenModal(
                                 'SELECTED_PRODUCT',
@@ -150,6 +153,8 @@
         "
         @close="$store_manager.onCloseModal()"
     />
+    <TourOverlay />
+    <TourFab />
 </template>
 
 <script setup lang="ts">
@@ -158,6 +163,8 @@ import ForkIcon from "~/components/icons/ForkIcon.vue";
 import InstagramIcon from "~/components/icons/InstagramIcon.vue";
 import WhasappIcon from "~/components/icons/WhasappIcon.vue";
 import ProductCard from "~/components/menu/ProductCard.vue";
+import TourOverlay from "~/components/tour/TourOverlay.vue";
+import TourFab from "~/components/tour/TourFab.vue";
 
 useSeoMeta({
     title: "Restaurant Los cinco sabores c.a",

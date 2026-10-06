@@ -141,3 +141,8 @@ h6 {
 button{
     cursor: pointer;
 }
+
+textarea,
+input {
+    font-family: "Geist", sans-serif;
+}

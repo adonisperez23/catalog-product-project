@@ -86,6 +86,7 @@
                                     !$store_manager.product_selected
                                         .is_product_without_contorno
                                 "
+                                id="tour-contornos"
                                 class="flex flex-col justify-center gap-[16px]"
                             >
                                 <div class="flex justify-between items-center">
@@ -164,7 +165,28 @@
                                     />
                                 </div>
                             </div>
+                            <div class="flex flex-col justify-center gap-[16px]">
+                                <div class="flex justify-between items-center">
+                                    <h4>Nota del plato</h4>
+                                    <h6 class="text-[#858589]">
+                                        {{
+                                            $store_manager.product_selected.note
+                                                .length
+                                        }}/200
+                                    </h6>
+                                </div>
+                                <textarea
+                                    v-model="
+                                        $store_manager.product_selected.note
+                                    "
+                                    maxlength="200"
+                                    rows="3"
+                                    placeholder="Ej: sin cebolla, poco salado, cortar en trozos…"
+                                    class="w-full resize-none rounded-[6px] border border-[#D7D7D7] bg-white p-[12px] text-[14px] leading-[1.4] text-[#333333] outline-none focus:border-[#522711] placeholder:text-[#858589]"
+                                ></textarea>
+                            </div>
                             <div
+                                id="tour-bebidas"
                                 class="flex flex-col justify-center gap-[16px]"
                             >
                                 <div class="flex justify-between items-center">
@@ -259,6 +281,7 @@
                                 </div>
                             </div>
                             <div
+                                id="tour-delivery"
                                 class="flex flex-col justify-center gap-[16px] mb-[132px] sm:mb-0"
                             >
                                 <div class="flex justify-between items-center">
@@ -268,7 +291,7 @@
                                     >
                                         <button
                                             @click="
-                                                _show_extras = !_show_extras
+                                                _show_delivery = !_show_delivery
                                             "
                                         >
                                             <ArrowUpIcon v-if="_show_extras" />
@@ -329,6 +352,7 @@
                                 </h2>
                             </div>
                             <div
+                                id="tour-agregar"
                                 class="flex justify-between items-center gap-[16px]"
                             >
                                 <AmountBtn
