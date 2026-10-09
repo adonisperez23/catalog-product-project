@@ -5,5 +5,11 @@ export default defineNuxtConfig({
     vite: {
         plugins: [tailwindcss()],
     },
-    css:['~/assets/css/main.css']
+    css:['~/assets/css/main.css'],
+    app: {
+        head: {
+            htmlAttrs: { lang: "es" },
+            link: [{ rel: "canonical", href: "https://loscincosabores.com" }],
+        },
+    },
 });

@@ -27,6 +27,7 @@
                             :src="
                                 $store_manager.product_selected.product.img_url
                             "
+                            :alt="$store_manager.product_selected.product.name"
                             class="object-cover h-[239px] w-full"
                             loading="lazy"
                         />
@@ -59,6 +60,9 @@
                                 :src="
                                     $store_manager.product_selected.product
                                         .img_url
+                                "
+                                :alt="
+                                    $store_manager.product_selected.product.name
                                 "
                                 class="size-[352px] border border-[#D7D7D7] rounded-[16px] object-cover"
                                 loading="lazy"

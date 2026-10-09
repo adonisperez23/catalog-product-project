@@ -42,6 +42,7 @@
                                 <img
                                     v-if="order.product_type === 'Plato'"
                                     :src="order.product.img_url"
+                                    :alt="order.product.name"
                                     class="w-[73px] h-[72px] border border-[#D7D7D7] object-cover rounded-[8px]"
                                     loading="lazy"
                                 />

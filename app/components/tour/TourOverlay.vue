@@ -372,11 +372,13 @@ function loop() {
 }
 
 function start_loop() {
+    if (!import.meta.client) return;
     cancelAnimationFrame(raf_id);
     raf_id = requestAnimationFrame(loop);
 }
 
 function stop_loop() {
+    if (!import.meta.client) return;
     cancelAnimationFrame(raf_id);
 }
 

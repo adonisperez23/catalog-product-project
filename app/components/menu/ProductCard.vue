@@ -8,6 +8,7 @@
             <source type="image/jpeg" :srcset="img_url" />
             <img
                 :src="img_url"
+                :alt="name"
                 class="size-[320px] border border-[#D7D7D7] hover:translate-y-[-12px] hover:border-[#72BF78] object-cover rounded-[16px]"
                 loading="lazy"
             />

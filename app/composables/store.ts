@@ -1,10 +1,7 @@
 import { StoreManager } from "~/types/store_manager";
 
-export const useStore = () =>
-    useState<StoreManager>(
-        "store",
-        () =>
-            new StoreManager(
+const store = ref<StoreManager>(
+    new StoreManager(
                 [
                     {
                         name: "Pollo guisado",
@@ -229,5 +226,7 @@ export const useStore = () =>
                         type: "Delivery",
                     },
                 ],
-            ),
-    );
+    ),
+);
+
+export const useStore = () => store;

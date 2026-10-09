@@ -3,7 +3,5 @@ import { NuxtPage } from "#components";
 </script>
 
 <template>
-    <ClientOnly>
-        <NuxtPage> </NuxtPage>
-    </ClientOnly>
+    <NuxtPage />
 </template>

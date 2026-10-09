@@ -166,13 +166,28 @@ import ProductCard from "~/components/menu/ProductCard.vue";
 import TourOverlay from "~/components/tour/TourOverlay.vue";
 import TourFab from "~/components/tour/TourFab.vue";
 
+const SITE_URL = "https://loscincosabores.com";
+const OG_IMAGE =
+    "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/ogimage.png";
+
 useSeoMeta({
     title: "Restaurant Los cinco sabores c.a",
-    ogTitle: "Restaurant Los cinco sabores c.a",
     description: "Platos caseros y tradicionales para toda la familia",
+    ogTitle: "Restaurant Los cinco sabores c.a",
     ogDescription: "Platos caseros y tradicionales para toda la familia",
-    ogImage:
-        "https://rlcms-fotos-producto.s3.sa-east-1.amazonaws.com/fotos-productos/ogimage.png",
+    ogType: "website",
+    ogUrl: SITE_URL,
+    ogSiteName: "Restaurant Los cinco sabores c.a",
+    ogLocale: "es_VE",
+    ogImage: OG_IMAGE,
+    ogImageAlt: "Restaurant Los cinco sabores c.a",
+    ogImageWidth: 1088,
+    ogImageHeight: 960,
+    twitterCard: "summary_large_image",
+    twitterTitle: "Restaurant Los cinco sabores c.a",
+    twitterDescription: "Platos caseros y tradicionales para toda la familia",
+    twitterImage: OG_IMAGE,
+    twitterImageAlt: "Restaurant Los cinco sabores c.a",
 });
 
 useHead({
@@ -186,7 +201,7 @@ const $store_manager = useStore();
 const _is_hidden = ref(true);
 const _is_scroll_up = ref(false);
 const _is_at_top = ref(true);
-let lastScrollY: number = window.scrollY;
+let lastScrollY: number = 0;
 
 function checkScrollDirection() {
     const currentScrollY = window.scrollY;
@@ -228,9 +243,8 @@ function checkScrollDirection() {
 //     });
 // }
 
-checkScrollDirection();
-
 onMounted(() => {
+    checkScrollDirection();
     window.addEventListener("scroll", checkScrollDirection);
 });
 onUnmounted(() => {
